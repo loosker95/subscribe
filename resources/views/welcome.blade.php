@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-
-</head>
+@extends('layouts.app')
+@section('content')
 <body>
     <div class="newsletter-subscribe">
         <div class="container">
             <div class="intro">
+
+            <ul>
+                <li><a href="{{route('subscribers.all')}}">See all the subscribers</a></li>
+                <li><a href="{{ route('posts.all')}}">See all posts</a></li>
+            </ul>
+            
                 <h2 class="text-center">Subscribe for our Newsletter</h2>
                 <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
                 @if ($errors->any())
@@ -37,5 +31,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</body>   
+@endsection
+
+

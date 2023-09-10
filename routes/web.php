@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Subscribers;
+use App\Http\Controllers\SubscribersController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,17 @@ use App\Http\Controllers\Subscribers;
 |
 */
 
-Route::get('/', [Subscribers::class, 'index'])->name('index.sent');
-Route::post('/', [Subscribers::class, 'subscribeWithMail'])->name('index.subscribe');
+Route::controller(SubscribersController::class)->group(function(){
+    Route::get('/', 'index')->name('index.sent');
+    Route::post('/', 'subscribeWithMail')->name('index.subscribe');
+    Route::get('/show', 'showAll')->name('subscribers.all');
+    Route::post('/show', 'sendNotification')->name('send.notification');
+});
+
+
+
+Route::get('/posts', [PostsController::class, 'index'])->name('posts.all');
+
+
+
+
